@@ -1,10 +1,20 @@
 <?php
-/* Script de connexion à la base smi */
+// Server name
+$servername = "mysql-studyvore.alwaysdata.net";
+// Username
+$username = "studyvore_33610";
+// Password
+$password = "Football33610@";
+// Database name
+$dbname = "studyvore_33610";
 
-  $id_bd = mysqli_connect("localhost", "noah", "rt", "sae23")
-    or die("Connexion au serveur et/ou à la base de données impossible");
+// Create the connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-  /* Gestion de l'encodage des caractères */
-  mysqli_query($id_bd, "SET NAMES 'utf8'");
-
+// Check the connection
+if ($conn->connect_error) {
+    // If the connection fails, display an error message and exit
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
+
