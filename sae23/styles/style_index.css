@@ -1,0 +1,23 @@
+/* Styles for buttons */
+.button-container {
+    margin-top: 20px; 
+    display: flex; 
+    gap: 10px; 
+}
+
+.button {
+    display: inline-block; /* Display buttons as inline-block elements */
+    padding: 12px 24px;
+    background-color: #1fb3bf; 
+    color: white;
+    border-radius: 5px;
+    text-align: center; 
+    text-decoration: none; 
+    transition: background-color 0.3s, transform 0.2s ease-in-out; /* Add transitions for background color and transform */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+    transform: translateY(-3px); /* Move the button up by 3 pixels on hover */
+}
+

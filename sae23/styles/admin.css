@@ -1,0 +1,86 @@
+/* Container for the forms */
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Spacing between forms */
+}
+
+/* Styles for the forms */
+.styled-form {
+    width: calc(50% - 10px); /* Calculate the width for 2 columns with a 20px gap */
+    padding: 15px; /* Reduced padding size */
+    background-color: #0C0D19;
+    border-radius: 15px;
+    box-shadow: 0px 10px 50px -10px #1A2332;
+}
+
+.styled-form h3 {
+    text-align: center; /* Center the text */
+    margin-bottom: 15px; /* Reduced bottom margin */
+    font-family: 'rubik', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.styled-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.styled-form input[type="text"],
+.styled-form input[type="password"],
+.styled-form input[type="email"],
+.styled-form textarea {
+    width: 100%;
+    padding: 10px; /* Reduced padding size */
+    margin-bottom: 15px; /* Reduced bottom margin */
+    border: none;
+    outline: none;
+    background-color: #0C0D19;
+    color: white;
+    border-bottom: 2px solid #e4e3ec;
+}
+
+.styled-form input[type="text"]::placeholder,
+.styled-form input[type="password"]::placeholder,
+.styled-form input[type="email"]::placeholder,
+.styled-form textarea::placeholder {
+    color: #8C99A7;
+}
+
+.styled-form textarea {
+    height: 120px; /* Reduced textarea height */
+    resize: none;
+}
+
+.styled-form button {
+    width: 100%;
+    max-width: 192px; /* Limit the width to fit */
+    height: 40px; /* Reduced button height */
+    border-radius: 8px;
+    border: none;
+    background-color: #1fb3bf;
+    color: white;
+    font-weight: bold;
+    font-size: 1em; /* Reduced font size */
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.styled-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 40px -10px #d6d6d6;
+}
+
+/* Media query for small screens */
+@media screen and (max-width: 900px) {
+    .styled-form {
+        width: 100%; /* Each form takes full width on small screens */
+    }
+}
+
