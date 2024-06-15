@@ -29,34 +29,53 @@
 
 <main>
     <h2>Bienvenue sur le site de gestion des capteurs de l'IUT</h2>
-    <p>Objectif : Visualiser les données des capteurs installés dans les bâtiments de l'IUT.</p>
+	  <div class="button-container">
+      <a href="consultation.php" class="button">Consulter les mesures</a>
+      <a href="login_form.php" class="button">Administration</a>
+    </div>
+    <p>Objectif : Visualiser les données des capteurs installés dans les bâtiments de l'IUT et offrir aux gestionnaires des bâtiments de l’IUT 
+	une interface conviviale et simple pour la visualisation des données capteur.</p>
     <p>Liste des bâtiments gérés :</p>
     <?php
     // Connect to the database
     include 'mysql.php';
 
     // Retrieve buildings
-    $sql = "SELECT * FROM Batiment";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
+    $sql_bat = "SELECT * FROM Batiment";
+    $result_bat = $conn->query($sql_bat);
+
+	// Retrive rooms
+	$sql_salle = "SELECT * FROM Salle";
+    $result_salle = $conn->query($sql_salle);
+		
+    if ($result_bat->num_rows > 0) {
         // Display buildings in a table
         echo "<table>";
         echo "<tr><th>Nom du Bâtiment</th></tr>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . htmlspecialchars($row["nom_bat"]) . "</td></tr>";
+        while ($row_bat = $result_bat->fetch_assoc()) {
+            echo "<tr><td>" . htmlspecialchars($row_bat["nom_bat"]) . "</td></tr>";
         }
-        echo "</table>";
+		echo "</table>";
     } else {
         echo "Aucun bâtiment trouvé.";
     }
 
     $conn->close();
     ?>
-
-    <div class="button-container">
-        <a href="consultation.php" class="button">Consulter les mesures</a>
-        <a href="login_form.php" class="button">Administration</a>
-    </div>
+	<p>Liste des salles gérées :</p>
+	<?php
+	if ($result_salle->num_rows > 0) {
+        // Display buildings in a table
+        echo "<table>";
+        echo "<tr><th>Nom des salles </th></tr>";
+        while ($row_salle = $result_salle->fetch_assoc()) {
+            echo "<tr><td>" . htmlspecialchars($row_salle["nom_salle"]) . "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "Aucune salle trouvée.";
+    }	
+	?> 
 </main>
 
 <!-- ============ BOTTOM OF PAGE ============== -->

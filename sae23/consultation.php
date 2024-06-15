@@ -53,7 +53,7 @@ $resultat_last_value=mysqli_query($conn, $requete_last_value)
         <tr>
             <th>Nom du Capteur</th>
             <th>Valeur</th>
-            <th>Date</th>
+            <th>Date et Heure</th>
         </tr>
         <?php
         // Check if there are any results
