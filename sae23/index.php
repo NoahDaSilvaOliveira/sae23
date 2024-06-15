@@ -76,6 +76,10 @@
         echo "Aucune salle trouvée.";
     }	
 	?> 
+	<h2>Mentions légales</h2>
+	<?php
+		include("mentions-legales.html")
+	?>
 </main>
 
 <!-- ============ BOTTOM OF PAGE ============== -->
