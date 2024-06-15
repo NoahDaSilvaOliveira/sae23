@@ -1,15 +1,18 @@
 <?php
 // Server name
-$servername = "mysql-studyvore.alwaysdata.net";
+$servername = "localhost";
 // Username
-$username = "studyvore_33610";
+$username = "noah";
 // Password
-$password = "Football33610@";
+$password = "rt";
 // Database name
-$dbname = "studyvore_33610";
+$dbname = "sae23";
 
 // Create the connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Set the characters encodage to utf8
+mysqli_query($conn, "SET NAMES 'utf8'");
 
 // Check the connection
 if ($conn->connect_error) {

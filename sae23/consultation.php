@@ -2,9 +2,18 @@
 include 'mysql.php';
 
 // Query to retrieve the latest measurement for each sensor
-$sql = "SELECT c.nom_capteur, m.valeur, m.date_mesure, m.date_mesure AS horaire FROM Mesure m JOIN Capteur c ON m.capteur = c.nom_capteur;";
+$requete_nb_capteur="SELECT COUNT(nom_capteur) FROM Capteur";
 
-$result = $conn->query($sql);
+$resultat_nb_capteur=mysqli_query($conn, $requete_nb_capteur)
+	or die("Execution de la requete impossible : $requete_nb_capteur");
+
+$nb_capteur= mysqli_fetch_array($resultat_nb_capteur);
+
+$requete_last_value="SELECT capteur,valeur,date_mesure FROM Mesure ORDER BY date_mesure DESC LIMIT $nb_capteur[0]"; 
+
+$resultat_last_value=mysqli_query($conn, $requete_last_value)
+	or die("Execution de la requete impossible : $requete_last_value");
+
 ?>
 
 <!DOCTYPE html>
@@ -45,18 +54,17 @@ $result = $conn->query($sql);
             <th>Nom du Capteur</th>
             <th>Valeur</th>
             <th>Date</th>
-            <th>Horaire</th>
         </tr>
         <?php
         // Check if there are any results
-        if ($result->num_rows > 0) {
+        if ($resultat_last_value->num_rows > 0) {
             // Loop through the results and display them in a table
-            while($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["nom_capteur"] . "</td><td>" . $row["valeur"] . "</td><td>" . $row["date_mesure"] . "</td><td>" . $row["horaire"] . "</td></tr>";
+            while($row = $resultat_last_value->fetch_assoc()) {
+                echo "<tr><td>" . $row["capteur"] . "</td><td>" . $row["valeur"] . "°C</td><td>" . $row["date_mesure"] . "</td></tr>";
             }
         } else {
             // Display a message if no results are found
-            echo "<tr><td colspan='4'>Aucune mesure trouvée</td></tr>";
+            echo "<tr><td colspan='3'>Aucune mesure trouvée</td></tr>";
         }
         $conn->close();
         ?>

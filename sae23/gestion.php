@@ -23,7 +23,7 @@ if ($result_bat->num_rows > 0) {
 }
 
 // Retrieve the averages, min and max of the rooms in the building
-$sql_stats = "SELECT s.nom_salle, AVG(m.valeur) AS moyenne, MIN(m.valeur) AS minimum, MAX(m.valeur) AS maximum
+$sql_stats = "SELECT s.nom_salle, ROUND(AVG(m.valeur),2) AS moyenne, MIN(m.valeur) AS minimum, MAX(m.valeur) AS maximum
               FROM Mesure m
               JOIN Capteur c ON m.capteur = c.nom_capteur
               JOIN Salle s ON c.salle = s.nom_salle
